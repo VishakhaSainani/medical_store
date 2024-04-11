@@ -43,100 +43,21 @@ const ProductUpdate = () => {
     }
   }, [productData]);
 
-  const uploadFileHandler = async (e) => {
-    const formData = new FormData();
-    formData.append("image", e.target.files[0]);
-    try {
-      const res = await uploadProductImage(formData).unwrap();
-      //image added
-      toast.success("Item added successfully", {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
-      });
-      setImage(res.image);
-    } catch (err) {
-      //image cant add
-      toast.success("Item added successfully", {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
-      });
-    }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append("image", image);
-      formData.append("name", name);
-      formData.append("description", description);
-      formData.append("price", price);
-      formData.append("category", category);
-      formData.append("quantity", quantity);
-      formData.append("brand", brand);
-      formData.append("countInStock", stock);
-
-      // Update product using the RTK Query mutation
-      const data = await updateProduct({ productId: params._id, formData });
-
-      if (data.error) {
-        toast.error(data.error, {
-          // position: toast.POSITION.TOP_RIGHT,
-          // autoClose: 2000,
-        });
-      } else {
-        toast.success(`Product successfully updated`, {
-          // position: toast.POSITION.TOP_RIGHT,
-          // autoClose: 2000,
-        });
-        navigate("/admin/allproductslist");
-      }
-    } catch (err) {
-      console.log(err);
-      toast.error("Product update failed. Try again.", {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
-      });
-    }
-  };
-
-  const handleDelete = async () => {
-    try {
-      let answer = window.confirm(
-        "Are you sure you want to delete this product?"
-      );
-      if (!answer) return;
-
-      const { data } = await deleteProduct(params._id);
-      toast.success(`${data.name} is deleted`, {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
-      });
-      navigate("/admin/allproductslist");
-    } catch (err) {
-      console.log(err);
-      toast.error("Delete failed. Try again.", {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
-      });
-    }
-  };
-
   return (
     <div className="container xl:mx-[9rem] sm:mx-[0]">
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
         <div className="md:w-3/4 p-3">
           <div className="h-12">Create Product</div>
-          {image && (
+          {/* {imageUrl && (
             <div className="text-center">
               <img
-                src={image}
+                src={imageUrl}
                 alt="product"
                 className="block mx-auto max-h-[200px]"
               />
             </div>
-          )}
+          )} */}
 
           <div className="mb-3">
             <label className=" border border-cyan-600 text-black px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">

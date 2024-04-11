@@ -108,16 +108,16 @@ const ProductUpdate = () => {
       if (!answer) return;
 
       const { data } = await deleteProduct(params._id);
-      toast.success(`${data.name} is deleted`, {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
+      toast.success(`"${data.name}" is deleted`, {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
       });
       navigate("/admin/allproductslist");
     } catch (err) {
       console.log(err);
       toast.error("Delete failed. Try again.", {
-        // position: toast.POSITION.TOP_RIGHT,
-        // autoClose: 2000,
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
       });
     }
   };
@@ -128,15 +128,15 @@ const ProductUpdate = () => {
         <AdminMenu />
         <div className="md:w-3/4 p-3">
           <div className="h-12">Create Product</div>
-          {image && (
+          {/* {imageUrl && (
             <div className="text-center">
               <img
-                src={image}
+                src={imageUrl}
                 alt="product"
                 className="block mx-auto max-h-[200px]"
               />
             </div>
-          )}
+          )} */}
 
           <div className="mb-3">
             <label className=" border border-cyan-600 text-black px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-11">

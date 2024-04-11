@@ -1,4 +1,4 @@
-// import React from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -34,8 +34,7 @@ const router = createBrowserRouter(
       <Route path="/admin" element={<AdminRoute />}>
         <Route path="userlist" element={<UserList />} />
         <Route path="categorylist" element={<CategoryList />} />
-        {/* <Route path="productlist/:pageNumber" element={<ProductList />} /> */}
-        <Route path="productlist" element={<ProductList />} />
+        <Route path="productlist/:pageNumber" element={<ProductList />} />
         <Route path="allproductslist" element={<AllProducts />} />
         <Route path="product/update/:_id" element={<ProductUpdate />} />
       </Route>

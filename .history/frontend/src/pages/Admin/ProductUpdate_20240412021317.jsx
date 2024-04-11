@@ -128,10 +128,10 @@ const ProductUpdate = () => {
         <AdminMenu />
         <div className="md:w-3/4 p-3">
           <div className="h-12">Create Product</div>
-          {image && (
+          {imageUrl && (
             <div className="text-center">
               <img
-                src={image}
+                src={imageUrl}
                 alt="product"
                 className="block mx-auto max-h-[200px]"
               />

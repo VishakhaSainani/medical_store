@@ -23,7 +23,7 @@ const ProductUpdate = () => {
   const [quantity, setQuantity] = useState(productData?.quantity || "");
   const [brand, setBrand] = useState(productData?.brand || "");
   const [stock, setStock] = useState(productData?.countInStock);
-
+  const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
 
   const { data: categories = [] } = useFetchCategoriesQuery();
@@ -54,6 +54,7 @@ const ProductUpdate = () => {
         // autoClose: 2000,
       });
       setImage(res.image);
+      setImageUrl(res.Image);
     } catch (err) {
       //image cant add
       toast.success("Item added successfully", {
@@ -128,10 +129,10 @@ const ProductUpdate = () => {
         <AdminMenu />
         <div className="md:w-3/4 p-3">
           <div className="h-12">Create Product</div>
-          {image && (
+          {imageUrl && (
             <div className="text-center">
               <img
-                src={image}
+                src={imageUrl}
                 alt="product"
                 className="block mx-auto max-h-[200px]"
               />

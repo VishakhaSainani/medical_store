@@ -9,7 +9,6 @@ import {
   useFetchCategoriesQuery,
 } from "../../redux/api/categoryApiSlice";
 import CategoryForm from "../../components/CategoryForm";
-import Modal from "../../components/Modal";
 
 const CategoryList = () => {
   const { data: categories } = useFetchCategoriesQuery();
@@ -20,8 +19,8 @@ const CategoryList = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const [createCategory] = useCreateCategoryMutation();
-  const [updateCategory] = useUpdateCategoryMutation();
-  const [deleteCategory] = useDeleteCategoryMutation();
+  // const [updateCategory] = useUpdateCategoryMutation();
+  // const [deleteCategory] = useDeleteCategoryMutation();
 
   const handleCreateCategory = async (e) => {
     e.preventDefault();
@@ -42,52 +41,6 @@ const CategoryList = () => {
     } catch (error) {
       console.log(error);
       toast.error("Creating category failed, try again.");
-    }
-  };
-
-  const handleUpdateCategory = async (e) => {
-    e.preventDefault();
-
-    if (!updatingName) {
-      toast.error("Category name is required");
-      return;
-    }
-
-    try {
-      const result = await updateCategory({
-        categoryId: selectedCategory._id,
-        updatedCategory: {
-          name: updatingName,
-        },
-      }).unwrap();
-
-      if (result.error) {
-        toast.error(result.error);
-      } else {
-        toast.success(`${result.name} is updated`);
-        setSelectedCategory(null);
-        setUpdatingName("");
-        setModalVisible(false);
-      }
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const handleDeleteCategory = async () => {
-    try {
-      const result = await deleteCategory(selectedCategory._id).unwrap();
-
-      if (result.error) {
-        toast.error(result.error);
-      } else {
-        toast.success(`${result.name} is deleted.`);
-        setSelectedCategory(null);
-        setModalVisible(false);
-      }
-    } catch (error) {
-      console.error(error);
-      toast.error("Category delection failed. Tray again.");
     }
   };
   return (
@@ -121,16 +74,6 @@ const CategoryList = () => {
             </div>
           ))}
         </div>
-
-        <Modal isOpen={modalVisible} onClose={() => setModalVisible(false)}>
-          <CategoryForm
-            value={updatingName}
-            setValue={(value) => setUpdatingName(value)}
-            handleSubmit={handleUpdateCategory}
-            buttonText="Update"
-            handleDelete={handleDeleteCategory}
-          />
-        </Modal>
       </div>
     </div>
   );

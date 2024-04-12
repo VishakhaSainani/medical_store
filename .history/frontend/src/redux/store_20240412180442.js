@@ -3,7 +3,6 @@ import { setupListeners } from "@reduxjs/toolkit/query/react";
 import { apiSlice } from "./api/apiSlice";
 import authReducer from "./features/auth/authSlice";
 import favoritesReducer from "../redux/features/favourites/favoriteSlice";
-import { getFavoritesFromLocalStorage } from "../Utils/localStorage";
 
 const store = configureStore({
   reducer: {

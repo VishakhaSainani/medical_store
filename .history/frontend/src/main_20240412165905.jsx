@@ -13,7 +13,7 @@ import Profile from "./pages/User/Profile";
 
 import Login from "./pages/Auth/Login.jsx";
 import Register from "./pages/Auth/Register.jsx";
-import Home from "./Home.jsx";
+
 import AdminRoute from "./pages/Admin/AdminRoute";
 import UserList from "./pages/Admin/UserList";
 import CategoryList from "./pages/Admin/CategoryList.jsx";

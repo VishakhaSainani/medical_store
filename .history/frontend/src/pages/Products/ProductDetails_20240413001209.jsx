@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addToCart } from "../../redux/features/cart/cartSlice";
+
 import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
@@ -54,11 +54,6 @@ const ProductDetails = () => {
       toast.error(error?.data || error.message);
     }
   };
-  const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
-    navigate("/cart");
-  };
-
   return (
     <>
       <div>

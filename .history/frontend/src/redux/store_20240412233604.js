@@ -13,7 +13,6 @@ const store = configureStore({
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authReducer,
     favorites: favoritesReducer,
-    cart: cartSliceReducer,
   },
   preloadedState: {
     favorites: initialFavorites,

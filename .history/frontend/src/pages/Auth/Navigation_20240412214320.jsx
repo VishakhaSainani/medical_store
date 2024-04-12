@@ -15,9 +15,11 @@ import { useLogoutMutation } from "../../redux/api/usersApiSlice";
 import { logout } from "../../redux/features/auth/authSlice";
 import FavoritesCount from "../Products/FavoritesCount";
 
+
+
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
-  const { cartItems } = useSelector((state) => state.cart);
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -45,6 +47,8 @@ const Navigation = () => {
     }
   };
 
+
+
   return (
     <div
       style={{ zIndex: 9999 }}
@@ -69,13 +73,13 @@ const Navigation = () => {
           <AiOutlineShopping className="mr-2 mt-[3rem]" size={26} />
           <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
         </Link>
-        <Link to="/cart" className="flex relative">
+            <Link to="/cart" className="flex relative">
           <div className="flex items-center transition-transform transform hover:translate-x-2">
             <AiOutlineShoppingCart className="mt-[3rem] mr-2" size={26} />
             <span className="hidden nav-item-name mt-[3rem]">Cart</span>{" "}
           </div>
 
-          <div className="absolute top-9">
+          {/* <div className="absolute top-9">
             {cartItems.length > 0 && (
               <span>
                 <span className="px-1 py-0 text-sm text-white bg-cyan-500 rounded-full">
@@ -83,7 +87,7 @@ const Navigation = () => {
                 </span>
               </span>
             )}
-          </div>
+          </div> */}
         </Link>
         <Link to="/favorite" className="flex relative">
           <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">
@@ -96,16 +100,16 @@ const Navigation = () => {
         </Link>
       </div>
       <div className="relative">
-        <button
+      <button
           onClick={toggleDropdown}
           className="flex items-center text-gray-800 focus:outline-none"
         >
-          {userInfo ? (
+              {userInfo ? (
             <span className="text-black">{userInfo.username}</span>
           ) : (
             <></>
           )}
-          {userInfo && (
+             {userInfo && (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className={`h-4 w-4 ml-1 ${
@@ -123,8 +127,8 @@ const Navigation = () => {
               />
             </svg>
           )}
-        </button>
-        {dropdownOpen && userInfo && (
+          </button>
+          {dropdownOpen && userInfo && (
           <ul
             className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-cyan-600 ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
@@ -190,31 +194,26 @@ const Navigation = () => {
             </li>
           </ul>
         )}
+
       </div>
-      {!userInfo && (
-        <ul>
-          <li>
-            <Link
-              to="/login"
-              className="flex items-center transition-transform transform hover:translate-x-2"
-            >
-              <AiOutlineLogin className="mt-[3rem] mr-2" size={26} />
-              <span className="hidden nav-item-name mt-[3rem]">Login</span>{" "}
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/register"
-              className="flex items-center transition-transform transform hover:translate-x-2"
-            >
-              <AiOutlineUserAdd className="mt-[3rem] mr-2" size={26} />
-              <span className="hidden nav-item-name mt-[3rem]">
-                Register
-              </span>{" "}
-            </Link>
-          </li>
-        </ul>
-      )}
+        {!userInfo && (
+          <ul>
+        <li>
+        <Link to="/login" className="flex items-center transition-transform transform hover:translate-x-2">
+          <AiOutlineLogin className="mt-[3rem] mr-2" size={26} />
+          <span className="hidden nav-item-name mt-[3rem]">Login</span>{" "}
+        </Link>
+        </li>
+        <li>
+        <Link to="/register" className="flex items-center transition-transform transform hover:translate-x-2">
+          <AiOutlineUserAdd className="mt-[3rem] mr-2" size={26} />
+          <span className="hidden nav-item-name mt-[3rem]">Register</span>{" "}
+        </Link>
+        </li>
+      </ul>
+        )}
+      
+
     </div>
   );
 };

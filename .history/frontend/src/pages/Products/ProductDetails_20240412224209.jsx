@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { addToCart } from "../../redux/features/cart/cartSlice";
+
 import {
   useGetProductDetailsQuery,
   useCreateReviewMutation,
@@ -11,6 +11,7 @@ import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import Ratings from "./Ratings";
 import ProductTabs from "./ProductTabs";
+
 
 import {
   FaBox,
@@ -39,26 +40,21 @@ const ProductDetails = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
-  const submitHandler = async (e) => {
-    e.preventDefault();
-
-    try {
-      await createReview({
-        productId,
-        rating,
-        comment,
-      }).unwrap();
-      refetch();
-      toast.success("Review created successfully");
-    } catch (error) {
-      toast.error(error?.data || error.message);
-    }
-  };
-  const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
-    navigate("/cart");
-  };
-
+    const submitHandler = async (e) => {
+        e.preventDefault();
+    
+        try {
+          await createReview({
+            productId,
+            rating,
+            comment,
+          }).unwrap();
+          refetch();
+          toast.success("Review created successfully");
+        } catch (error) {
+          toast.error(error?.data || error.message);
+        }
+      };
   return (
     <>
       <div>
@@ -148,7 +144,7 @@ const ProductDetails = () => {
               </div>
               <div className="btn-container">
                 <button
-                  onClick={addToCartHandler}
+                  //   onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
                   className="bg-cyan-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
                 >

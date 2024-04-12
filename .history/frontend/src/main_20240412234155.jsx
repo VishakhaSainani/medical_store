@@ -24,7 +24,8 @@ import CategoryList from "./pages/Admin/CategoryList.jsx";
 import ProductList from "./pages/Admin/ProductList";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
 import ProductUpdate from "./pages/Admin/ProductUpdate";
-import Cart from "./pages/Cart.jsx";
+import Cart from "./pages/Cart.js";
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>

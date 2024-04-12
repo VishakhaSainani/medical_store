@@ -75,7 +75,7 @@ const Navigation = () => {
             <span className="hidden nav-item-name mt-[3rem]">Cart</span>{" "}
           </div>
 
-          <div className="absolute top-9">
+          {/* <div className="absolute top-9">
             {cartItems.length > 0 && (
               <span>
                 <span className="px-1 py-0 text-sm text-white bg-cyan-500 rounded-full">
@@ -83,7 +83,7 @@ const Navigation = () => {
                 </span>
               </span>
             )}
-          </div>
+          </div> */}
         </Link>
         <Link to="/favorite" className="flex relative">
           <div className="flex justify-center items-center transition-transform transform hover:translate-x-2">

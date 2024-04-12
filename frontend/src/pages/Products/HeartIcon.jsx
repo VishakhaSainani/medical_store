@@ -43,10 +43,11 @@ const HeartIcon = ({product}) => {
       {isFavorite ? (
         <FaHeart className="text-cyan-600" />
       ) : (
-        <FaRegHeart className="text-white" />
+        <FaRegHeart className="text-black" />
       )}
     </div>
   );
 }
 
 export default HeartIcon
+

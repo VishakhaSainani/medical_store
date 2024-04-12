@@ -5,10 +5,18 @@ import authReducer from "./features/auth/authSlice";
 import favoritesReducer from "../redux/features/favourites/favoriteSlice";
 import { getFavoritesFromLocalStorage } from "../Utils/localStorage";
 
+const initialFavorites = getFavoritesFromLocalStorage() || [];
+
+
 const store = configureStore({
   reducer: {
     [apiSlice.reducerPath]: apiSlice.reducer,
     auth: authReducer,
+    favorites: favoritesReducer,
+
+  },
+  preloadedState: {
+    favorites: initialFavorites,
   },
 
   middleware: (getDefaultMiddleware) =>

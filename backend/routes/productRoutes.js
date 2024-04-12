@@ -28,7 +28,7 @@ router
 .put(authenticate, authorizeAdmin, formidable(), updateProductDetails)
 .delete(authenticate, authorizeAdmin, removeProduct);
 
-// router.route("/filtered-products").post(filterProducts);
+router.route("/filtered-products").post(filterProducts);
 
 
 export default router;

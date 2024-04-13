@@ -53,13 +53,13 @@ const Login = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-black"
               >
-                Email Address
+                Email Address/Phone Number
               </label>
               <input
-                type="email"
+                type="text"
                 id="email"
                 className="mt-1 p-2 border rounded w-full"
-                placeholder="Enter email"
+                placeholder="Enter email or Phone Number"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />

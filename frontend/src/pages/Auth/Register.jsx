@@ -11,6 +11,7 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  // const [phone,setPhone] = useState("")
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const Register = () => {
       }
     }
   };
-
+  
   return (
     <section className="pl-[10rem] flex flex-wrap">
       <div className="mr-[4rem] mt-[5rem]">
@@ -75,17 +76,34 @@ const Register = () => {
               htmlFor="email"
               className="block text-sm font-medium text-black"
             >
-              Email Address
+              Email Address/Phone Number
             </label>
             <input
               type="email"
               id="email"
               className="mt-1 p-2 border rounded w-full"
-              placeholder="Enter email"
+              placeholder="Enter email or Phone Number"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
+          {/* <div className="my-[2rem]">
+            <label
+              htmlFor="phone"
+              className="block text-sm font-medium text-black"
+            >
+              Phone Number
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              pattern="[0-9]{10}"
+              className="mt-1 p-2 border rounded w-full"
+              placeholder="Enter email or Phone Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+          </div> */}
 
           <div className="my-[2rem]">
             <label

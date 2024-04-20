@@ -49,10 +49,7 @@ app.get("/api/config/paypal", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.set(
-    "Access-Control-Allow-Origin",
-    "https://medical-store-1.onrender.com"
-  );
+  res.set("Access-Control-Allow-Origin", "https://wt-medical-1.onrender.com");
   res.set("Access-Control-Allow-Credentials", "true");
   res.send("hello to the backend ");
 });

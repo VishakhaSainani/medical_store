@@ -20,7 +20,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: "https://medical-store-1.onrender.com",
+    origin: "https://medical-management-571eb.web.app",
     methods: ["GET", "PUT", "POST", "DELETE"],
     allowedHeaders: ["Content-Type"],
     credentials: true,
@@ -38,7 +38,7 @@ app.use("/api/orders", orderRoutes);
 app.use((req, res, next) => {
   res.setHeader(
     "Access-Control-Allow-Origin",
-    "https://medical-store-1.onrender.com"
+    "https://medical-management-571eb.web.app"
   );
   res.setHeader("Access-Control-Allow-Credentials", "true");
   next();
@@ -51,7 +51,7 @@ app.get("/api/config/paypal", (req, res) => {
 app.get("/", (req, res) => {
   res.set(
     "Access-Control-Allow-Origin",
-    "https://medical-store-1.onrender.com"
+    "https://medical-management-571eb.web.app"
   );
   res.set("Access-Control-Allow-Credentials", "true");
   res.send("hello to the backend ");
